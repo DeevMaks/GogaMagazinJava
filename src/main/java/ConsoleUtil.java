@@ -12,7 +12,7 @@ public final class ConsoleUtil {
     }
 
     public static void clear() {
-        // Максимально похоже на system("cls") без зависимости от cmd/ANSI.
+        // РњР°РєСЃРёРјР°Р»СЊРЅРѕ РїРѕС…РѕР¶Рµ РЅР° system("cls") Р±РµР· Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ cmd/ANSI.
         for (int i = 0; i < 50; i++) System.out.println();
     }
 

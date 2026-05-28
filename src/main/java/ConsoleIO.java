@@ -26,7 +26,7 @@ public final class ConsoleIO {
     }
 
     public static void err() {
-        System.out.println("Неккоретный ввод!");
+        System.out.println("РќРµРєРєРѕСЂРµС‚РЅС‹Р№ РІРІРѕРґ!");
         ConsoleUtil.sleep(1500);
         ConsoleUtil.clear();
     }

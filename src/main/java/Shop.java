@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Shop {
     }
 
     public void start() {
-        System.out.println("\n\n\n\t\t\t===| Добро пожаловать в технический магазин Azazin! |===\n\n\n");
+        System.out.println("\n\n\n\t\t\t===| Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РІ С‚РµС…РЅРёС‡РµСЃРєРёР№ РјР°РіР°Р·РёРЅ Azazin! |===\n\n\n");
         Login();
     }
 
@@ -23,9 +23,9 @@ public class Shop {
         String login, pass, choose;
 
         while (true) {
-            System.out.print("Введите логин -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ -> ");
             login = ConsoleIO.getline();
-            System.out.print("Введите пароль -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ -> ");
             pass = ConsoleIO.getline();
 
             if ("exit".equals(login) && "exit".equals(pass)) {
@@ -37,11 +37,11 @@ public class Shop {
                     if ("SuperAdmin".equals(i.GetStatus())) {
                         user = new SuperAdmin(i.GetIdUser(), i.GetLogin(), i.GetPass());
                         ConsoleUtil.clear();
-                        System.out.println("Добро пожаловать, " + i.GetLogin() + "\n");
-                        System.out.println("Ваш статус: " + i.GetStatus() + "\n");
+                        System.out.println("Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ, " + i.GetLogin() + "\n");
+                        System.out.println("Р’Р°С€ СЃС‚Р°С‚СѓСЃ: " + i.GetStatus() + "\n");
 
                         while (true) {
-                            System.out.print("Выберите тип склада..\n1 - Готовый\n2 - Новый\nВвод -> ");
+                            System.out.print("Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї СЃРєР»Р°РґР°..\n1 - Р“РѕС‚РѕРІС‹Р№\n2 - РќРѕРІС‹Р№\nР’РІРѕРґ -> ");
                             choose = ConsoleIO.getline();
                             if ("1".equals(choose)) {
                                 user.getOfficial().getStorage().CreateStorage();
@@ -64,8 +64,8 @@ public class Shop {
                         else if ("Employee".equals(i.GetStatus())) user = new Employee(i.GetIdUser(), i.GetLogin(), i.GetPass());
 
                         ConsoleUtil.clear();
-                        System.out.println("Добро пожаловать, " + user.getLogin() + "\n");
-                        System.out.println("Ваш статус: " + user.getStatus() + "\n");
+                        System.out.println("Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ, " + user.getLogin() + "\n");
+                        System.out.println("Р’Р°С€ СЃС‚Р°С‚СѓСЃ: " + user.getStatus() + "\n");
                         ConsoleUtil.sleep(1500);
                         user.ShowMenu();
                         return;
@@ -78,8 +78,7 @@ public class Shop {
 
     public void ComplectionUsersVector() {
         users.clear();
-        Charset cs = Charset.forName("windows-1251");
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(usersDB), cs))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(usersDB), StandardCharsets.UTF_8))) {
             String userLine;
             while ((userLine = br.readLine()) != null) {
                 userLine = userLine.trim();
@@ -92,7 +91,7 @@ public class Shop {
                 users.add(new UserPattern(users.size(), login, password, status));
             }
         } catch (Exception e) {
-            System.out.println("Дата база пользователей не открыта!");
+            System.out.println("Р”Р°С‚Р° Р±Р°Р·Р° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµ РѕС‚РєСЂС‹С‚Р°!");
         }
     }
 }

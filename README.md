@@ -6,12 +6,12 @@
 
 Так как у вас команда `mvn` не найдена, можно собрать/запустить через `javac/java`.
 
-Сборка (важно: кодировка исходников):
+Сборка (UTF-8):
 
 ```powershell
 cd "c:\Users\П - 11\Documents\Deev\magaz\magaz\GogaMagazin(Java)"
 New-Item -ItemType Directory -Force -Path target | Out-Null
-javac -encoding windows-1251 -d target src\main\java\*.java
+javac -encoding UTF-8 -d target src\main\java\*.java
 ```
 
 Запуск:
@@ -19,4 +19,3 @@ javac -encoding windows-1251 -d target src\main\java\*.java
 ```powershell
 java -cp target Main
 ```
-

@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +17,7 @@ public class Storage {
     public Storage() {}
 
     public void CreateStorage() {
-        Charset cs = Charset.forName("windows-1251");
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileProducts), cs))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileProducts), StandardCharsets.UTF_8))) {
             String line;
             while ((line = br.readLine()) != null) {
                 line = line.trim();
@@ -37,21 +36,20 @@ public class Storage {
                 if (item.getIDproduct() != 0) products.add(item);
             }
         } catch (Exception e) {
-            System.out.println("База данных не открыта!");
+            System.out.println("Р‘Р°Р·Р° РґР°РЅРЅС‹С… РЅРµ РѕС‚РєСЂС‹С‚Р°!");
         }
     }
 
     public void CreateNewStorege() {
-        System.out.print("Введите новое имя для склада -> ");
+        System.out.print("Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ РёРјСЏ РґР»СЏ СЃРєР»Р°РґР° -> ");
         String file = ConsoleIO.getline();
         fileProducts = file + ".txt";
-        Charset cs = Charset.forName("windows-1251");
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileProducts), cs))) {
-            System.out.println("Склад успешно создан!");
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileProducts), StandardCharsets.UTF_8))) {
+            System.out.println("РЎРєР»Р°Рґ СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ!");
             ConsoleUtil.pause();
             ConsoleUtil.clear();
         } catch (Exception e) {
-            System.out.println("Новая база данных не открылась!");
+            System.out.println("РќРѕРІР°СЏ Р±Р°Р·Р° РґР°РЅРЅС‹С… РЅРµ РѕС‚РєСЂС‹Р»Р°СЃСЊ!");
         }
     }
 
@@ -62,17 +60,17 @@ public class Storage {
         while (true) {
             ConsoleUtil.clear();
             ShowStorage(1);
-            System.out.print("Введите ID товара или \"exit\" для выхода -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ ID С‚РѕРІР°СЂР° РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР° -> ");
             chooseId = ConsoleIO.getline();
 
             if ("exit".equals(chooseId)) {
-                System.out.println("Отмена перации пополнения склада!");
+                System.out.println("РћС‚РјРµРЅР° РїРµСЂР°С†РёРё РїРѕРїРѕР»РЅРµРЅРёСЏ СЃРєР»Р°РґР°!");
                 ConsoleUtil.sleep(1500);
                 ConsoleUtil.clear();
                 break;
             }
 
-            System.out.print("Введите кол-во товара для пополнения -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ С‚РѕРІР°СЂР° РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ -> ");
             chooseCount = ConsoleIO.getline();
 
             if (numbers.IsNumber(chooseId) && numbers.IsNumber(chooseCount)) {
@@ -80,22 +78,22 @@ public class Storage {
                 count = Integer.parseInt(chooseCount);
 
                 if (id < 0 || id > products.size() - 1 || count < 0 || count > maxItemSize) {
-                    System.out.println("Неккоретный ID или кол-во\nМаксвимальное кол-во - " + maxItemSize);
+                    System.out.println("РќРµРєРєРѕСЂРµС‚РЅС‹Р№ ID РёР»Рё РєРѕР»-РІРѕ\nРњР°РєСЃРІРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ - " + maxItemSize);
                     ConsoleUtil.sleep(1500);
                 } else {
                     Product p = products.get(id);
                     System.out.printf("%-25s\t%d -----> %d\n\n", p.getName(), p.getCount(), p.getCount() + count);
-                    System.out.print("Подтверить?\n Да - 1\t Нет - 2\nВвод -> ");
+                    System.out.print("РџРѕРґС‚РІРµСЂРёС‚СЊ?\n Р”Р° - 1\t РќРµС‚ - 2\nР’РІРѕРґ -> ");
                     choose = ConsoleIO.getline();
                     if ("1".equals(choose)) {
                         p.setCount(p.getCount() + count);
                         UpdateDataBase();
-                        System.out.println("Товар успешно поплнен!\n");
+                        System.out.println("РўРѕРІР°СЂ СѓСЃРїРµС€РЅРѕ РїРѕРїР»РЅРµРЅ!\n");
                         ConsoleUtil.sleep(1500);
                         ConsoleUtil.clear();
                         break;
                     } else if ("2".equals(choose)) {
-                        System.out.println("Отмена операции!");
+                        System.out.println("РћС‚РјРµРЅР° РѕРїРµСЂР°С†РёРё!");
                         ConsoleUtil.sleep(1500);
                     } else {
                         ConsoleIO.err();
@@ -112,17 +110,17 @@ public class Storage {
         while (true) {
             ConsoleUtil.clear();
             ShowStorage(1);
-            System.out.print("Введите ID товара или \"exit\" для выхода -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ ID С‚РѕРІР°СЂР° РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР° -> ");
             chooseId = ConsoleIO.getline();
 
             if ("exit".equals(chooseId)) {
-                System.out.println("Отмена перации списания склада!");
+                System.out.println("РћС‚РјРµРЅР° РїРµСЂР°С†РёРё СЃРїРёСЃР°РЅРёСЏ СЃРєР»Р°РґР°!");
                 ConsoleUtil.sleep(1500);
                 ConsoleUtil.clear();
                 break;
             }
 
-            System.out.print("Введите кол-во товара для списания -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ С‚РѕРІР°СЂР° РґР»СЏ СЃРїРёСЃР°РЅРёСЏ -> ");
             chooseCount = ConsoleIO.getline();
 
             if (numbers.IsNumber(chooseId) && numbers.IsNumber(chooseCount)) {
@@ -130,22 +128,22 @@ public class Storage {
                 count = Integer.parseInt(chooseCount);
 
                 if (id < 0 || id > products.size() - 1 || count < 0 || count > maxItemSize || count > products.get(id).getCount()) {
-                    System.out.println("Неккоретный ID или кол-во\nМаксвимальное кол-во - " + maxItemSize);
+                    System.out.println("РќРµРєРєРѕСЂРµС‚РЅС‹Р№ ID РёР»Рё РєРѕР»-РІРѕ\nРњР°РєСЃРІРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ - " + maxItemSize);
                     ConsoleUtil.sleep(1500);
                 } else {
                     Product p = products.get(id);
                     System.out.printf("%-25s\t%d -----> %d\n\n", p.getName(), p.getCount(), p.getCount() - count);
-                    System.out.print("Подтверить?\n Да - 1\t Нет - 2\nВвод -> ");
+                    System.out.print("РџРѕРґС‚РІРµСЂРёС‚СЊ?\n Р”Р° - 1\t РќРµС‚ - 2\nР’РІРѕРґ -> ");
                     choose = ConsoleIO.getline();
                     if ("1".equals(choose)) {
                         p.setCount(p.getCount() - count);
                         UpdateDataBase();
-                        System.out.println("Товар успешно списанан!\n");
+                        System.out.println("РўРѕРІР°СЂ СѓСЃРїРµС€РЅРѕ СЃРїРёСЃР°РЅР°РЅ!\n");
                         ConsoleUtil.sleep(1500);
                         ConsoleUtil.clear();
                         break;
                     } else if ("2".equals(choose)) {
-                        System.out.println("Отмена операции!");
+                        System.out.println("РћС‚РјРµРЅР° РѕРїРµСЂР°С†РёРё!");
                         ConsoleUtil.sleep(1500);
                     } else {
                         ConsoleIO.err();
@@ -163,17 +161,17 @@ public class Storage {
         while (true) {
             ConsoleUtil.clear();
             ShowStorage(2);
-            System.out.print("Введите ID товара или \"exit\" для выхода -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ ID С‚РѕРІР°СЂР° РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР° -> ");
             chooseId = ConsoleIO.getline();
 
             if ("exit".equals(chooseId)) {
-                System.out.println("Отмена перации изменения цены!");
+                System.out.println("РћС‚РјРµРЅР° РїРµСЂР°С†РёРё РёР·РјРµРЅРµРЅРёСЏ С†РµРЅС‹!");
                 ConsoleUtil.sleep(1500);
                 ConsoleUtil.clear();
                 break;
             }
 
-            System.out.print("Введите новую цену для товара -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ С†РµРЅСѓ РґР»СЏ С‚РѕРІР°СЂР° -> ");
             choosePrice = ConsoleIO.getline();
 
             if (numbers.IsNumber(chooseId) && numbers.IsNumber(choosePrice)) {
@@ -181,22 +179,22 @@ public class Storage {
                 newPrice = Double.parseDouble(choosePrice);
 
                 if (id < 0 || id > products.size() - 1 || newPrice < 0 || newPrice > 499999) {
-                    System.out.println("Неккоретный ID или цена\nМаксвимальное цена - " + 499999);
+                    System.out.println("РќРµРєРєРѕСЂРµС‚РЅС‹Р№ ID РёР»Рё С†РµРЅР°\nРњР°РєСЃРІРёРјР°Р»СЊРЅРѕРµ С†РµРЅР° - " + 499999);
                     ConsoleUtil.sleep(1500);
                 } else {
                     Product p = products.get(id);
                     System.out.printf("%-25s\t%.0f -----> %.0f\n\n", p.getName(), p.getPrice(), newPrice);
-                    System.out.print("Подтверить?\n Да - 1\t Нет - 2\nВвод -> ");
+                    System.out.print("РџРѕРґС‚РІРµСЂРёС‚СЊ?\n Р”Р° - 1\t РќРµС‚ - 2\nР’РІРѕРґ -> ");
                     choose = ConsoleIO.getline();
                     if ("1".equals(choose)) {
                         p.setPrice(newPrice);
                         UpdateDataBase();
-                        System.out.println("Цена успешно изменена!\n");
+                        System.out.println("Р¦РµРЅР° СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅР°!\n");
                         ConsoleUtil.sleep(1500);
                         ConsoleUtil.clear();
                         break;
                     } else if ("2".equals(choose)) {
-                        System.out.println("Отмена операции!");
+                        System.out.println("РћС‚РјРµРЅР° РѕРїРµСЂР°С†РёРё!");
                         ConsoleUtil.sleep(1500);
                     } else {
                         ConsoleIO.err();
@@ -213,39 +211,39 @@ public class Storage {
         while (true) {
             ConsoleUtil.clear();
             ShowStorage(3);
-            System.out.print("Введите ID товара или \"exit\" для выхода -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ ID С‚РѕРІР°СЂР° РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР° -> ");
             chooseId = ConsoleIO.getline();
 
             if ("exit".equals(chooseId)) {
-                System.out.println("Операция смены названия прервана!\n");
+                System.out.println("РћРїРµСЂР°С†РёСЏ СЃРјРµРЅС‹ РЅР°Р·РІР°РЅРёСЏ РїСЂРµСЂРІР°РЅР°!\n");
                 ConsoleUtil.sleep(1500);
                 break;
             }
 
-            System.out.print("Введите название нового товара -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РЅРѕРІРѕРіРѕ С‚РѕРІР°СЂР° -> ");
             newName = ConsoleIO.getline();
 
             if (newName.length() <= 0 || newName.length() >= 60 || "exit".equals(newName)) {
-                System.out.println("Ошибка: Максимальная длина названия 60 символов");
+                System.out.println("РћС€РёР±РєР°: РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РЅР°Р·РІР°РЅРёСЏ 60 СЃРёРјРІРѕР»РѕРІ");
                 ConsoleUtil.sleep(1500);
             } else if (numbers.IsNumber(chooseId)) {
                 id = Integer.parseInt(chooseId) - 1;
                 if (id < 0 || id > products.size() - 1) {
-                    System.out.println("Ошибка ID");
+                    System.out.println("РћС€РёР±РєР° ID");
                     ConsoleUtil.sleep(1500);
                 } else {
                     Product p = products.get(id);
                     System.out.printf("%-25s\t%s -----> %s\n\n", p.getName(), p.getName(), newName);
-                    System.out.print("Подтверить?\n Да - 1\t Нет - 2\nВвод -> ");
+                    System.out.print("РџРѕРґС‚РІРµСЂРёС‚СЊ?\n Р”Р° - 1\t РќРµС‚ - 2\nР’РІРѕРґ -> ");
                     choose = ConsoleIO.getline();
                     if ("1".equals(choose)) {
                         p.setName(newName);
                         UpdateDataBase();
-                        System.out.println("Изменение названия успешно завершено");
+                        System.out.println("РР·РјРµРЅРµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РµРЅРѕ");
                         ConsoleUtil.sleep(1500);
                         break;
                     } else if ("2".equals(choose)) {
-                        System.out.println("Отмена");
+                        System.out.println("РћС‚РјРµРЅР°");
                         ConsoleUtil.sleep(1500);
                     } else {
                         ConsoleIO.err();
@@ -259,14 +257,14 @@ public class Storage {
         String choose;
         while (true) {
             ConsoleUtil.clear();
-            System.out.println("1 - Добавить новый товар");
-            System.out.println("2 - Изменить название товара");
-            System.out.println("3 - Изменить цену товара");
-            System.out.println("4 - Добавить кол-во товара");
-            System.out.println("5 - Уменьшить кол-во товара");
-            System.out.println("6 - Удалить товар");
-            System.out.println("0 - Выход из редактора склада");
-            System.out.print("Ввод -> ");
+            System.out.println("1 - Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ С‚РѕРІР°СЂ");
+            System.out.println("2 - РР·РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°");
+            System.out.println("3 - РР·РјРµРЅРёС‚СЊ С†РµРЅСѓ С‚РѕРІР°СЂР°");
+            System.out.println("4 - Р”РѕР±Р°РІРёС‚СЊ РєРѕР»-РІРѕ С‚РѕРІР°СЂР°");
+            System.out.println("5 - РЈРјРµРЅСЊС€РёС‚СЊ РєРѕР»-РІРѕ С‚РѕРІР°СЂР°");
+            System.out.println("6 - РЈРґР°Р»РёС‚СЊ С‚РѕРІР°СЂ");
+            System.out.println("0 - Р’С‹С…РѕРґ РёР· СЂРµРґР°РєС‚РѕСЂР° СЃРєР»Р°РґР°");
+            System.out.print("Р’РІРѕРґ -> ");
             choose = ConsoleIO.getline();
             if ("1".equals(choose)) {
                 AddNewItem();
@@ -297,19 +295,19 @@ public class Storage {
         while (true) {
             while (true) {
                 ConsoleUtil.clear();
-                System.out.println("\tДобавление нового товара!\n\nВведите \"exit\" для прекращении операции\n");
-                System.out.print("Введите название нового товара через пробел -> ");
+                System.out.println("\tР”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ С‚РѕРІР°СЂР°!\n\nР’РІРµРґРёС‚Рµ \"exit\" РґР»СЏ РїСЂРµРєСЂР°С‰РµРЅРёРё РѕРїРµСЂР°С†РёРё\n");
+                System.out.print("Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РЅРѕРІРѕРіРѕ С‚РѕРІР°СЂР° С‡РµСЂРµР· РїСЂРѕР±РµР» -> ");
                 newName = ConsoleIO.getline();
 
                 if ("exit".equals(newName)) {
-                    System.out.println("Операция добавления товара прервана!\n");
+                    System.out.println("РћРїРµСЂР°С†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ С‚РѕРІР°СЂР° РїСЂРµСЂРІР°РЅР°!\n");
                     ConsoleUtil.sleep(1500);
                     exit = false;
                     break;
                 }
 
                 if (newName.length() <= 0 || newName.length() >= 60) {
-                    System.out.println("Ошибка: Максимальная длина названия 60 символов");
+                    System.out.println("РћС€РёР±РєР°: РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РЅР°Р·РІР°РЅРёСЏ 60 СЃРёРјРІРѕР»РѕРІ");
                     ConsoleUtil.sleep(1500);
                     ConsoleUtil.clear();
                 } else {
@@ -318,11 +316,11 @@ public class Storage {
             }
 
             while (exit) {
-                System.out.print("Введите кол-во нового товара -> ");
+                System.out.print("Р’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ РЅРѕРІРѕРіРѕ С‚РѕРІР°СЂР° -> ");
                 newCount = ConsoleIO.getline();
 
                 if ("exit".equals(newCount)) {
-                    System.out.println("Операция добавления товара прервана!\n");
+                    System.out.println("РћРїРµСЂР°С†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ С‚РѕРІР°СЂР° РїСЂРµСЂРІР°РЅР°!\n");
                     ConsoleUtil.sleep(1500);
                     exit = false;
                     break;
@@ -331,7 +329,7 @@ public class Storage {
                 if (numbers.IsNumber(newCount)) {
                     int count = Integer.parseInt(newCount);
                     if (count > maxItemSize) {
-                        System.out.println("Ошибка максимального размера товара! Не более " + maxItemSize + " ед.\n");
+                        System.out.println("РћС€РёР±РєР° РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЂР°Р·РјРµСЂР° С‚РѕРІР°СЂР°! РќРµ Р±РѕР»РµРµ " + maxItemSize + " РµРґ.\n");
                     } else {
                         break;
                     }
@@ -339,11 +337,11 @@ public class Storage {
             }
 
             while (exit) {
-                System.out.print("Введите цену нового товара -> ");
+                System.out.print("Р’РІРµРґРёС‚Рµ С†РµРЅСѓ РЅРѕРІРѕРіРѕ С‚РѕРІР°СЂР° -> ");
                 newPrice = ConsoleIO.getline();
 
                 if ("exit".equals(newPrice)) {
-                    System.out.println("Операция добавления товара прервана!\n");
+                    System.out.println("РћРїРµСЂР°С†РёСЏ РґРѕР±Р°РІР»РµРЅРёСЏ С‚РѕРІР°СЂР° РїСЂРµСЂРІР°РЅР°!\n");
                     ConsoleUtil.sleep(1500);
                     exit = false;
                     break;
@@ -352,7 +350,7 @@ public class Storage {
                 if (numbers.IsNumber(newPrice)) {
                     int price = Integer.parseInt(newPrice);
                     if (price > 499999) {
-                        System.out.println("Ошибка максимального размера цены товара! Не более " + 499999 + " ед.\n");
+                        System.out.println("РћС€РёР±РєР° РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ СЂР°Р·РјРµСЂР° С†РµРЅС‹ С‚РѕРІР°СЂР°! РќРµ Р±РѕР»РµРµ " + 499999 + " РµРґ.\n");
                         ConsoleUtil.sleep(1500);
                     } else {
                         break;
@@ -363,8 +361,8 @@ public class Storage {
             ConsoleUtil.clear();
 
             if (exit) {
-                System.out.println("Новый товар: " + newName + "\nКол-во: " + newCount + "\nЦена: " + newPrice + "\n");
-                System.out.print("Подтвердить?\n1 - Да\t2 - Нет\nВвод -> ");
+                System.out.println("РќРѕРІС‹Р№ С‚РѕРІР°СЂ: " + newName + "\nРљРѕР»-РІРѕ: " + newCount + "\nР¦РµРЅР°: " + newPrice + "\n");
+                System.out.print("РџРѕРґС‚РІРµСЂРґРёС‚СЊ?\n1 - Р”Р°\t2 - РќРµС‚\nР’РІРѕРґ -> ");
                 choose = ConsoleIO.getline();
 
                 if ("1".equals(choose)) {
@@ -374,14 +372,14 @@ public class Storage {
                     newItem.setPrice(Integer.parseInt(newPrice));
                     products.add(newItem);
 
-                    System.out.print("Идет подготовка...");
+                    System.out.print("РРґРµС‚ РїРѕРґРіРѕС‚РѕРІРєР°...");
                     ConsoleUtil.sleep(2000);
-                    System.out.println("Товар успешно добавлен!\n");
+                    System.out.println("РўРѕРІР°СЂ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ!\n");
                     ConsoleUtil.sleep(1500);
 
                     UpdateDataBase();
                 } else if ("2".equals(choose)) {
-                    System.out.println("Отмена\n");
+                    System.out.println("РћС‚РјРµРЅР°\n");
                     ConsoleUtil.sleep(1500);
                 } else {
                     ConsoleIO.err();
@@ -401,10 +399,10 @@ public class Storage {
         while (true) {
             ConsoleUtil.clear();
             ShowStorage(3);
-            System.out.print("\nВведите ID товара для удаление или \"exit\" для выхода -> ");
+            System.out.print("\nР’РІРµРґРёС‚Рµ ID С‚РѕРІР°СЂР° РґР»СЏ СѓРґР°Р»РµРЅРёРµ РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР° -> ");
             chooseId = ConsoleIO.getline();
             if ("exit".equals(chooseId)) {
-                System.out.println("Операция удаления товара прервана!\n");
+                System.out.println("РћРїРµСЂР°С†РёСЏ СѓРґР°Р»РµРЅРёСЏ С‚РѕРІР°СЂР° РїСЂРµСЂРІР°РЅР°!\n");
                 ConsoleUtil.sleep(1500);
                 break;
             }
@@ -412,18 +410,18 @@ public class Storage {
             if (numbers.IsNumber(chooseId)) {
                 id = Integer.parseInt(chooseId) - 1;
                 if (id < 0 || id > products.size() - 1) {
-                    System.out.println("Ошибка ID");
+                    System.out.println("РћС€РёР±РєР° ID");
                     ConsoleUtil.sleep(1500);
                 } else {
-                    System.out.println("Удаляемый товар -> " + products.get(id).getName() + "\n");
-                    System.out.print("Подтвердить?\n1 - Да\t2 - Нет\nВвод -> ");
+                    System.out.println("РЈРґР°Р»СЏРµРјС‹Р№ С‚РѕРІР°СЂ -> " + products.get(id).getName() + "\n");
+                    System.out.print("РџРѕРґС‚РІРµСЂРґРёС‚СЊ?\n1 - Р”Р°\t2 - РќРµС‚\nР’РІРѕРґ -> ");
                     choose = ConsoleIO.getline();
 
                     if ("1".equals(choose)) {
                         products.remove(id);
                         UpdateDataBase();
                     } else if ("2".equals(choose)) {
-                        System.out.println("Отмена удаления товара!");
+                        System.out.println("РћС‚РјРµРЅР° СѓРґР°Р»РµРЅРёСЏ С‚РѕРІР°СЂР°!");
                         ConsoleUtil.sleep(1500);
                     } else {
                         ConsoleIO.err();
@@ -435,26 +433,26 @@ public class Storage {
 
     public void ShowStorage(int mode) {
         if (mode == 0) {
-            System.out.println("ID\t" + String.format("%-25s", "Название товара\t\t") + "Кол-во\t" + "Цена");
+            System.out.println("ID\t" + String.format("%-25s", "РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°\t\t") + "РљРѕР»-РІРѕ\t" + "Р¦РµРЅР°");
             for (Product i : products) System.out.println(i);
             ConsoleUtil.pause();
             ConsoleUtil.clear();
         } else if (mode == 1) {
-            System.out.println("ID\t" + String.format("%-25s", "Название товара\t\t") + "Кол-во");
+            System.out.println("ID\t" + String.format("%-25s", "РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°\t\t") + "РљРѕР»-РІРѕ");
             for (Product i : products) {
                 System.out.printf("%d\t%-25s\t%d\n", i.getIDproduct(), i.getName(), i.getCount());
             }
             ConsoleUtil.pause();
             ConsoleUtil.clear();
         } else if (mode == 2) {
-            System.out.println("ID\t" + String.format("%-25s", "Название товара\t\t") + "Цена");
+            System.out.println("ID\t" + String.format("%-25s", "РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°\t\t") + "Р¦РµРЅР°");
             for (Product i : products) {
                 System.out.printf("%d\t%-25s\t%.0f\n", i.getIDproduct(), i.getName(), i.getPrice());
             }
             ConsoleUtil.pause();
             ConsoleUtil.clear();
         } else if (mode == 3) {
-            System.out.println("ID\t" + String.format("%-15s", "Название товара"));
+            System.out.println("ID\t" + String.format("%-15s", "РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°"));
             for (Product i : products) {
                 System.out.printf("%d\t%-25s\n", i.getIDproduct(), i.getName());
             }
@@ -464,14 +462,13 @@ public class Storage {
     }
 
     public void UpdateDataBase() {
-        Charset cs = Charset.forName("windows-1251");
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileProducts), cs))) {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileProducts), StandardCharsets.UTF_8))) {
             for (Product i : products) {
                 bw.write(i.toString());
                 bw.newLine();
             }
         } catch (Exception e) {
-            System.out.println("База данных не открыта!");
+            System.out.println("Р‘Р°Р·Р° РґР°РЅРЅС‹С… РЅРµ РѕС‚РєСЂС‹С‚Р°!");
         }
     }
 
@@ -483,7 +480,7 @@ public class Storage {
         for (Product i : products) {
             if (i.getIDproduct() == id) return i;
         }
-        System.out.println("Нету продукта с таким ID!");
+        System.out.println("РќРµС‚Сѓ РїСЂРѕРґСѓРєС‚Р° СЃ С‚Р°РєРёРј ID!");
         ConsoleUtil.sleep(2000);
         ConsoleUtil.clear();
         return null;

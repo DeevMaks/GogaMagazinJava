@@ -19,8 +19,8 @@ public class Check {
     public int print() {
         double total = 0.0;
 
-        System.out.println("-------------------- ЧЕК --------------------");
-        System.out.println("Название     Кол-во   Цена     Сумма");
+        System.out.println("-------------------- Р§Р•Рљ --------------------");
+        System.out.println("РќР°Р·РІР°РЅРёРµ     РљРѕР»-РІРѕ   Р¦РµРЅР°     РЎСѓРјРјР°");
         System.out.println("---------------------------------------------");
 
         for (Product item : items) {
@@ -30,7 +30,7 @@ public class Check {
         }
 
         System.out.println("---------------------------------------------");
-        System.out.println("Итого: " + (int) total);
+        System.out.println("РС‚РѕРіРѕ: " + (int) total);
         return (int) total;
     }
 

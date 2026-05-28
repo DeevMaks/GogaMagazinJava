@@ -51,12 +51,12 @@ public class Sale {
 
     public void Selling() {
         if (storage == null) {
-            System.out.println("Îøèáêà: ñêëàä íå çàäàí.");
+            System.out.println("ĞÑˆĞ¸Ğ±ĞºĞ°: ÑĞºĞ»Ğ°Ğ´ Ğ½Ğµ Ğ·Ğ°Ğ´Ğ°Ğ½.");
             return;
         }
 
         if (storage.ProductsVector().isEmpty()) {
-            System.out.println("Ñêëàä ïóñò. Ïğîäàæà íåâîçìîæíà.");
+            System.out.println("Ğ¡ĞºĞ»Ğ°Ğ´ Ğ¿ÑƒÑÑ‚. ĞŸÑ€Ğ¾Ğ´Ğ°Ğ¶Ğ° Ğ½ĞµĞ²Ğ¾Ğ·Ğ¼Ğ¾Ğ¶Ğ½Ğ°.");
             return;
         }
 
@@ -66,14 +66,14 @@ public class Sale {
             ConsoleUtil.clear();
             storage.ShowStorage(0);
 
-            System.out.println("=== Ïğîäàæà ===");
-            System.out.print("Ââåäèòå ID òîâàğà èëè \"exit\" äëÿ âûõîäà: ");
+            System.out.println("=== ĞŸÑ€Ğ¾Ğ´Ğ°Ğ¶Ğ° ===");
+            System.out.print("Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ID Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ° Ğ¸Ğ»Ğ¸ \"exit\" Ğ´Ğ»Ñ Ğ²Ñ‹Ñ…Ğ¾Ğ´Ğ°: ");
 
             chooseid = ConsoleIO.getline();
 
             if ("exit".equals(chooseid)) {
                 if (check.getSize() == 0) {
-                    System.out.println("Îòìåíà ïîêóïîê!");
+                    System.out.println("ĞÑ‚Ğ¼ĞµĞ½Ğ° Ğ¿Ğ¾ĞºÑƒĞ¿Ğ¾Ğº!");
                     check.clear();
                     return;
                 }
@@ -82,11 +82,11 @@ public class Sale {
                 String chooseMoney;
 
                 while (true) {
-                    System.out.print("Ââåäèòå êîë-âî íàëè÷íûõ èëè \"exit\" äëÿ îòìåíû ïîêóïîê: ");
+                    System.out.print("Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ğ½Ğ°Ğ»Ğ¸Ñ‡Ğ½Ñ‹Ñ… Ğ¸Ğ»Ğ¸ \"exit\" Ğ´Ğ»Ñ Ğ¾Ñ‚Ğ¼ĞµĞ½Ñ‹ Ğ¿Ğ¾ĞºÑƒĞ¿Ğ¾Ğº: ");
                     chooseMoney = ConsoleIO.getline();
 
                     if ("exit".equals(chooseMoney)) {
-                        // Âîçâğàò òîâàğà íà ñêëàä (óïğîùåííî, êàê â îğèãèíàëå).
+                        // Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‚ Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ° Ğ½Ğ° ÑĞºĞ»Ğ°Ğ´ (ÑƒĞ¿Ñ€Ğ¾Ñ‰ĞµĞ½Ğ½Ğ¾, ĞºĞ°Ğº Ğ² Ğ¾Ñ€Ğ¸Ğ³Ğ¸Ğ½Ğ°Ğ»Ğµ).
                         for (Product j : check.VectorItems()) {
                             for (Product stItem : storage.ProductsVector()) {
                                 if (j.getName().equals(stItem.getName())) {
@@ -94,7 +94,7 @@ public class Sale {
                                 }
                             }
                         }
-                        System.out.println("Îòìåíà ïîêóïîê!");
+                        System.out.println("ĞÑ‚Ğ¼ĞµĞ½Ğ° Ğ¿Ğ¾ĞºÑƒĞ¿Ğ¾Ğº!");
                         ConsoleUtil.sleep(2000);
                         return;
                     }
@@ -103,12 +103,12 @@ public class Sale {
                         int money = Integer.parseInt(chooseMoney);
 
                         if (money - total > cash) {
-                            System.out.println("Ââåäèòå ÷èñëî ìåíüøå! Ñäà÷è íå õâàòàåò");
+                            System.out.println("Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾ Ğ¼ĞµĞ½ÑŒÑˆĞµ! Ğ¡Ğ´Ğ°Ñ‡Ğ¸ Ğ½Ğµ Ñ…Ğ²Ğ°Ñ‚Ğ°ĞµÑ‚");
                             ConsoleUtil.sleep(2000);
                         } else {
                             cash += total;
                             cash -= money - total;
-                            System.out.println("Îïëàòà çàâåğøåíà! Âàøà ñäà÷à: " + (money - total));
+                            System.out.println("ĞĞ¿Ğ»Ğ°Ñ‚Ğ° Ğ·Ğ°Ğ²ĞµÑ€ÑˆĞµĞ½Ğ°! Ğ’Ğ°ÑˆĞ° ÑĞ´Ğ°Ñ‡Ğ°: " + (money - total));
                             ConsoleUtil.pause();
                             return;
                         }
@@ -116,7 +116,7 @@ public class Sale {
                 }
             }
 
-            System.out.print("Ââåäèòå êîë-âî òîâàğà: ");
+            System.out.print("Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ°: ");
             chooseCount = ConsoleIO.getline();
 
             if (number.IsNumber(chooseid) && number.IsNumber(chooseCount)) {
@@ -124,19 +124,19 @@ public class Sale {
                 int count = Integer.parseInt(chooseCount);
                 boolean exit = true;
 
-                // Ïîïûòêà äîáàâèòü ê ñóùåñòâóşùåé ïîçèöèè ÷åêà
+                // ĞŸĞ¾Ğ¿Ñ‹Ñ‚ĞºĞ° Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ¸Ñ‚ÑŒ Ğº ÑÑƒÑ‰ĞµÑÑ‚Ğ²ÑƒÑÑ‰ĞµĞ¹ Ğ¿Ğ¾Ğ·Ğ¸Ñ†Ğ¸Ğ¸ Ñ‡ĞµĞºĞ°
                 for (Product i : check.VectorItems()) {
                     Product item = storage.ProductsVector().get(id - 1);
                     if (i.getName().equals(item.getName())) {
                         if (count > 0 && count < item.getCount()) {
                             i.setCount(i.getCount() + count);
                             item.setCount(item.getCount() - count);
-                            System.out.println("Òîâàğ ïîïîëíåí!");
+                            System.out.println("Ğ¢Ğ¾Ğ²Ğ°Ñ€ Ğ¿Ğ¾Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½!");
                             ConsoleUtil.sleep(2000);
                             exit = false;
                             break;
                         } else {
-                            System.out.println("Òàêîãî êîë-âî íåòó íà ñêëàäå!");
+                            System.out.println("Ğ¢Ğ°ĞºĞ¾Ğ³Ğ¾ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ğ½ĞµÑ‚Ñƒ Ğ½Ğ° ÑĞºĞ»Ğ°Ğ´Ğµ!");
                             ConsoleUtil.sleep(2000);
                             exit = false;
                             break;
@@ -156,12 +156,12 @@ public class Sale {
                                 check.addItem(itemTemp);
 
                                 i.setCount(i.getCount() - count);
-                                System.out.println("Òîâàğ äîáàâëåí â ÷åê!");
+                                System.out.println("Ğ¢Ğ¾Ğ²Ğ°Ñ€ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½ Ğ² Ñ‡ĞµĞº!");
                                 ConsoleUtil.sleep(2000);
                                 exit = false;
                                 break;
                             } else {
-                                System.out.println("Ââåäåííîå êîë-âî ïğèâûøàåò êîë-âî òîâàğà íà ñêëàäå èëè ÷èñëî < 0!");
+                                System.out.println("Ğ’Ğ²ĞµĞ´ĞµĞ½Ğ½Ğ¾Ğµ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ğ¿Ñ€Ğ¸Ğ²Ñ‹ÑˆĞ°ĞµÑ‚ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ° Ğ½Ğ° ÑĞºĞ»Ğ°Ğ´Ğµ Ğ¸Ğ»Ğ¸ Ñ‡Ğ¸ÑĞ»Ğ¾ < 0!");
                                 ConsoleUtil.pause();
                                 exit = false;
                                 break;
@@ -171,7 +171,7 @@ public class Sale {
                 }
 
                 if (exit) {
-                    System.out.println("Òîâàğ íå íàéäåí!");
+                    System.out.println("Ğ¢Ğ¾Ğ²Ğ°Ñ€ Ğ½Ğµ Ğ½Ğ°Ğ¹Ğ´ĞµĞ½!");
                     ConsoleUtil.sleep(2000);
                 }
             }
@@ -179,11 +179,11 @@ public class Sale {
     }
 
     public void ShowIncome() {
-        System.out.println("Îáùàÿ âûğó÷êà: " + (int) income + " ğóá.");
+        System.out.println("ĞĞ±Ñ‰Ğ°Ñ Ğ²Ñ‹Ñ€ÑƒÑ‡ĞºĞ°: " + (int) income + " Ñ€ÑƒĞ±.");
     }
 
     public void StoreReturner() {
-        System.out.println("Ìîäóëü âîçâğàòà â ğàçğàáîòêå.");
+        System.out.println("ĞœĞ¾Ğ´ÑƒĞ»ÑŒ Ğ²Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‚Ğ° Ğ² Ñ€Ğ°Ğ·Ñ€Ğ°Ğ±Ğ¾Ñ‚ĞºĞµ.");
     }
 }
 

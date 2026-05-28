@@ -11,11 +11,11 @@ public class Employee extends User {
         while (true) {
             ConsoleUtil.clear();
 
-            System.out.println("1 - Íà÷àòü ïðîäàæó");
-            System.out.println("2 - Ïîêàçàòü ñêëàä");
-            System.out.println("3 - Îò÷åò î ïðèáûëè");
-            System.out.println("0 - Çàêðûòü ñìåíó");
-            System.out.print("Ââîä -> ");
+            System.out.println("1 - ÐÐ°Ñ‡Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ñƒ");
+            System.out.println("2 - ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´");
+            System.out.println("3 - ÐžÑ‚Ñ‡ÐµÑ‚ Ð¾ Ð¿Ñ€Ð¸Ð±Ñ‹Ð»Ð¸");
+            System.out.println("0 - Ð—Ð°ÐºÑ€Ñ‹Ñ‚ÑŒ ÑÐ¼ÐµÐ½Ñƒ");
+            System.out.print("Ð’Ð²Ð¾Ð´ -> ");
             choose = ConsoleIO.getline();
 
             if ("1".equals(choose) && official.getStorage().getStotageSize() > 0) {

@@ -48,7 +48,7 @@ public class Product {
     }
 
     public String ToString() {
-        // Аналог ostringstream + setw/left. Делаем похожее табами/шириной.
+        // РђРЅР°Р»РѕРі ostringstream + setw/left. Р”РµР»Р°РµРј РїРѕС…РѕР¶РµРµ С‚Р°Р±Р°РјРё/С€РёСЂРёРЅРѕР№.
         String leftName = String.format("%-20s", name);
         return id + "\t" + leftName + "\t\t" + count + "\t" + formatPrice(price);
     }

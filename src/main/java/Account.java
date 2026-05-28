@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +22,12 @@ public class Account {
 
         while (true) {
             ConsoleUtil.clear();
-            System.out.println("1 - Добавить нового пользователя");
-            System.out.println("2 - Показать пользователей");
-            System.out.println("3 - Изменить пароль пользователю");
-            System.out.println("4 - Удаление учетной записи");
-            System.out.println("0 - Выход из редактора аккунтов");
-            System.out.print("Ввод -> ");
+            System.out.println("1 - Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ");
+            System.out.println("2 - РџРѕРєР°Р·Р°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№");
+            System.out.println("3 - РР·РјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ");
+            System.out.println("4 - РЈРґР°Р»РµРЅРёРµ СѓС‡РµС‚РЅРѕР№ Р·Р°РїРёСЃРё");
+            System.out.println("0 - Р’С‹С…РѕРґ РёР· СЂРµРґР°РєС‚РѕСЂР° Р°РєРєСѓРЅС‚РѕРІ");
+            System.out.print("Р’РІРѕРґ -> ");
             choose = ConsoleIO.getline();
             if ("1".equals(choose)) {
                 AddNewUser();
@@ -53,41 +53,41 @@ public class Account {
         while (exit) {
             while (true) {
                 ConsoleUtil.clear();
-                System.out.print("Введите логин нового пользователя или \"exit\" для выхода -> ");
+                System.out.print("Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР° -> ");
                 newLogin = ConsoleIO.getline();
                 if ("exit".equals(newLogin)) {
-                    System.out.println("Отмена добавления нового пользователя!");
+                    System.out.println("РћС‚РјРµРЅР° РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!");
                     ConsoleUtil.sleep(1500);
                     exit = false;
                     break;
                 }
                 if (CheckLogin(newLogin)) break;
-                System.out.println("Допустимые символы: a-z, A-Z, 0-9\n");
+                System.out.println("Р”РѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹: a-z, A-Z, 0-9\n");
                 ConsoleUtil.sleep(1500);
             }
 
             while (exit) {
                 ConsoleUtil.clear();
-                System.out.print("Введите пароль нового пользователя или \"exit\" для выхода -> ");
+                System.out.print("Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР° -> ");
                 newPass = ConsoleIO.getline();
                 if ("exit".equals(newPass)) {
-                    System.out.println("Отмена добавления нового пользователя!");
+                    System.out.println("РћС‚РјРµРЅР° РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!");
                     ConsoleUtil.sleep(1500);
                     exit = false;
                     break;
                 }
                 if (CheckPass(newPass)) break;
-                System.out.println("Допустимые символы: a-z, A-Z, 0-9 + символы\n");
+                System.out.println("Р”РѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹: a-z, A-Z, 0-9 + СЃРёРјРІРѕР»С‹\n");
                 ConsoleUtil.sleep(1500);
             }
 
             while (exit) {
                 ConsoleUtil.clear();
-                System.out.println("Выберите роль для нового пользователя или \"exit\" для выхода:");
-                System.out.print("1 - Администратор\n2 - Сотрудник\nВвод -> ");
+                System.out.println("Р’С‹Р±РµСЂРёС‚Рµ СЂРѕР»СЊ РґР»СЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР°:");
+                System.out.print("1 - РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ\n2 - РЎРѕС‚СЂСѓРґРЅРёРє\nР’РІРѕРґ -> ");
                 choose = ConsoleIO.getline();
                 if ("exit".equals(choose)) {
-                    System.out.println("Отмена добавления нового пользователя!");
+                    System.out.println("РћС‚РјРµРЅР° РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!");
                     ConsoleUtil.sleep(1500);
                     exit = false;
                     break;
@@ -105,23 +105,23 @@ public class Account {
 
             while (exit) {
                 ConsoleUtil.clear();
-                System.out.println("Пользователь -> " + newLogin);
-                System.out.println("Пароль -> " + newPass);
-                System.out.println("Роль -> " + newRole);
+                System.out.println("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ -> " + newLogin);
+                System.out.println("РџР°СЂРѕР»СЊ -> " + newPass);
+                System.out.println("Р РѕР»СЊ -> " + newRole);
 
-                System.out.print("Подтвердить?\n1 - Да\t2 - Нет\nВвод -> ");
+                System.out.print("РџРѕРґС‚РІРµСЂРґРёС‚СЊ?\n1 - Р”Р°\t2 - РќРµС‚\nР’РІРѕРґ -> ");
                 choose = ConsoleIO.getline();
                 if ("1".equals(choose)) {
                     users.add(new UserPattern(users.size(), newLogin, newPass, newRole));
-                    System.out.print("Идет подготовка...");
+                    System.out.print("РРґРµС‚ РїРѕРґРіРѕС‚РѕРІРєР°...");
                     ConsoleUtil.sleep(1500);
                     SaveToDataBase();
-                    System.out.println("Пользователь успешно добавлен!");
+                    System.out.println("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ!");
                     exit = false;
                     ConsoleUtil.sleep(1500);
                     break;
                 } else if ("2".equals(choose)) {
-                    System.out.println("Отмена");
+                    System.out.println("РћС‚РјРµРЅР°");
                     ConsoleUtil.sleep(1500);
                     break;
                 } else {
@@ -133,7 +133,7 @@ public class Account {
 
     public void ShowUsers(String status) {
         ConsoleUtil.clear();
-        System.out.println("№\t" + String.format("%-12s", "Логин\t\t") + "Пароль\t\t\t" + "Роль");
+        System.out.println("в„–\t" + String.format("%-12s", "Р›РѕРіРёРЅ\t\t") + "РџР°СЂРѕР»СЊ\t\t\t" + "Р РѕР»СЊ");
 
         for (UserPattern i : users) {
             if ("Admin".equals(status) && "SuperAdmin".equals(i.GetStatus())) continue;
@@ -151,7 +151,7 @@ public class Account {
 
         while (true) {
             ShowUsers(status);
-            System.out.print("Выберите номер пользователя или \"exit\" для выхода -> ");
+            System.out.print("Р’С‹Р±РµСЂРёС‚Рµ РЅРѕРјРµСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё \"exit\" РґР»СЏ РІС‹С…РѕРґР° -> ");
             choose = ConsoleIO.getline();
 
             if ("exit".equals(choose)) break;
@@ -161,20 +161,20 @@ public class Account {
 
                 for (UserPattern i : users) {
                     if (i.GetIdUser() == id && !"SuperAdmin".equals(i.GetStatus())) {
-                        System.out.print("Изменить пароль пользователя?\nДа - 1\tНет - 2 ->");
+                        System.out.print("РР·РјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ?\nР”Р° - 1\tРќРµС‚ - 2 ->");
                         choose = ConsoleIO.getline();
 
                         if ("1".equals(choose)) {
                             while (true) {
-                                System.out.print("Введите старый пароль -> ");
+                                System.out.print("Р’РІРµРґРёС‚Рµ СЃС‚Р°СЂС‹Р№ РїР°СЂРѕР»СЊ -> ");
                                 oldPass = ConsoleIO.getline();
-                                System.out.print("Введите новый пароль -> ");
+                                System.out.print("Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ -> ");
                                 newPass = ConsoleIO.getline();
 
                                 if (oldPass.equals(i.GetPass())) {
                                     i.SetPass(newPass);
                                     SaveToDataBase();
-                                    System.out.println("Пароль изменен!");
+                                    System.out.println("РџР°СЂРѕР»СЊ РёР·РјРµРЅРµРЅ!");
                                     ConsoleUtil.sleep(1500);
                                     break;
                                 } else {
@@ -197,7 +197,7 @@ public class Account {
 
     public boolean CheckLogin(String str) {
         if (str.length() < 5 || str.length() >= 20) {
-            System.out.println("Недопустимая длина логина! От 5 до 20");
+            System.out.println("РќРµРґРѕРїСѓСЃС‚РёРјР°СЏ РґР»РёРЅР° Р»РѕРіРёРЅР°! РћС‚ 5 РґРѕ 20");
             ConsoleUtil.sleep(1500);
             return false;
         }
@@ -205,7 +205,7 @@ public class Account {
         for (int k = 0; k < str.length(); k++) {
             char sym = str.charAt(k);
             if (!numbersFoo.getSpesialSymbols().contains(sym)) {
-                System.out.println("Неккоретный символ в логине!");
+                System.out.println("РќРµРєРєРѕСЂРµС‚РЅС‹Р№ СЃРёРјРІРѕР» РІ Р»РѕРіРёРЅРµ!");
                 ConsoleUtil.sleep(1500);
                 return false;
             }
@@ -213,7 +213,7 @@ public class Account {
 
         for (UserPattern i : users) {
             if (str.equals(i.GetLogin())) {
-                System.out.println("Имя уже занято!\n");
+                System.out.println("РРјСЏ СѓР¶Рµ Р·Р°РЅСЏС‚Рѕ!\n");
                 ConsoleUtil.sleep(1500);
                 return false;
             }
@@ -226,14 +226,14 @@ public class Account {
 
         while (true) {
             if (users.size() < 2 && "SuperAdmin".equals(status)) {
-                System.out.println("Нету пользователей для удаления!");
+                System.out.println("РќРµС‚Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ!");
                 ConsoleUtil.sleep(2000);
                 break;
             }
 
             while (true) {
                 ShowUsers(status);
-                System.out.print("Введите ID пользователя для удаления -> ");
+                System.out.print("Р’РІРµРґРёС‚Рµ ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ -> ");
                 chooseId = ConsoleIO.getline();
 
                 if (numbersFoo.IsNumber(chooseId)) {
@@ -241,13 +241,13 @@ public class Account {
                     for (int idx = 0; idx < users.size(); idx++) {
                         UserPattern i = users.get(idx);
                         if (i.GetIdUser() == id && !"SuperAdmin".equals(i.GetStatus())) {
-                            System.out.print("Вы действительно хотите удалить, " + i.GetLogin() + "?\nДа - 1\tНет - 2 -> ");
+                            System.out.print("Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ, " + i.GetLogin() + "?\nР”Р° - 1\tРќРµС‚ - 2 -> ");
                             choose = ConsoleIO.getline();
                             if ("1".equals(choose)) {
-                                System.out.println("Удаление пользователя...");
+                                System.out.println("РЈРґР°Р»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ...");
                                 users.remove(idx);
                                 SaveToDataBase();
-                                System.out.println("Пользователь успешно удален!");
+                                System.out.println("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ!");
                                 ConsoleUtil.sleep(2000);
                                 break;
                             } else if ("2".equals(choose)) {
@@ -269,7 +269,7 @@ public class Account {
 
     public boolean CheckPass(String str) {
         if (str.length() < 8 || str.length() > 30) {
-            System.out.println("Ошибка длины пароля");
+            System.out.println("РћС€РёР±РєР° РґР»РёРЅС‹ РїР°СЂРѕР»СЏ");
             ConsoleUtil.sleep(1500);
             return false;
         }
@@ -279,7 +279,7 @@ public class Account {
         for (int i = 0; i < str.length(); i++) {
             char sym = str.charAt(i);
             if (!numbersFoo.getPassSymbols().contains(sym)) {
-                System.out.println("Неккоретный ввод");
+                System.out.println("РќРµРєРєРѕСЂРµС‚РЅС‹Р№ РІРІРѕРґ");
                 ConsoleUtil.sleep(1500);
                 return false;
             }
@@ -291,15 +291,14 @@ public class Account {
         if (numCount > 2 && sumCount > 2) {
             return true;
         } else {
-            System.out.println("Минимум 3 символа и 3 цифры");
+            System.out.println("РњРёРЅРёРјСѓРј 3 СЃРёРјРІРѕР»Р° Рё 3 С†РёС„СЂС‹");
             return false;
         }
     }
 
     public void ComplectionUsersVector() {
         users.clear();
-        Charset cs = Charset.forName("windows-1251");
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(usersDB), cs))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(usersDB), StandardCharsets.UTF_8))) {
             String userLine;
             while ((userLine = br.readLine()) != null) {
                 userLine = userLine.trim();
@@ -312,19 +311,18 @@ public class Account {
                 users.add(new UserPattern(users.size(), login, password, st));
             }
         } catch (Exception e) {
-            System.out.println("Дата база пользователей не открыта!");
+            System.out.println("Р”Р°С‚Р° Р±Р°Р·Р° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµ РѕС‚РєСЂС‹С‚Р°!");
         }
     }
 
     public void SaveToDataBase() {
-        Charset cs = Charset.forName("windows-1251");
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(usersDB), cs))) {
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(usersDB), StandardCharsets.UTF_8))) {
             for (UserPattern i : users) {
                 bw.write(i.GetLogin() + " " + i.GetPass() + " " + i.GetStatus());
                 bw.newLine();
             }
         } catch (Exception e) {
-            System.out.println("База данных не открылась!");
+            System.out.println("Р‘Р°Р·Р° РґР°РЅРЅС‹С… РЅРµ РѕС‚РєСЂС‹Р»Р°СЃСЊ!");
         }
     }
 }

@@ -51,20 +51,20 @@ public abstract class User {
         String choose, pass;
         while (true) {
             ConsoleUtil.clear();
-            System.out.print("Введите пароль или \"exit\" для возращения в меню\nВвод -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ РёР»Рё \"exit\" РґР»СЏ РІРѕР·СЂР°С‰РµРЅРёСЏ РІ РјРµРЅСЋ\nР’РІРѕРґ -> ");
             choose = ConsoleIO.getline();
 
             if ("exit".equals(choose)) {
                 return false;
             }
 
-            System.out.print("Введите пароль еще раз для подтверждения или \"exit\" для возращения в меню\nВвод -> ");
+            System.out.print("Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ РµС‰Рµ СЂР°Р· РґР»СЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РёР»Рё \"exit\" РґР»СЏ РІРѕР·СЂР°С‰РµРЅРёСЏ РІ РјРµРЅСЋ\nР’РІРѕРґ -> ");
             pass = ConsoleIO.getline();
 
             if (choose.equals(pass) && pass.equals(this.getPassword())) {
                 return true;
             } else {
-                System.out.println("Неверный пароль!");
+                System.out.println("РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ!");
                 ConsoleUtil.sleep(2000);
             }
         }

@@ -11,16 +11,16 @@ public class SuperAdmin extends User {
         while (true) {
             ConsoleUtil.clear();
 
-            System.out.println("1 - Íà÷àòü ïðîäàæó");
-            System.out.println("2 - Ïîêàçàòü ñêëàä");
-            System.out.println("3 - Ïîïîëíèòü ñêëàä");
-            System.out.println("4 - Ñïèñàòü òîâàð");
-            System.out.println("5 - Èçìíèòü öåíó");
-            System.out.println("6 - Ðåäàêòèðèâàòü ñêëàä");
-            System.out.println("7 - Ðåäàêòèðèâàòü ïåðñîíàë");
-            System.out.println("8 - Îò÷åò î ïðèáûëè");
-            System.out.println("0 - Çàêðûòü ñìåíó");
-            System.out.print("Ââîä -> ");
+            System.out.println("1 - ÐÐ°Ñ‡Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ñƒ");
+            System.out.println("2 - ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´");
+            System.out.println("3 - ÐŸÐ¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´");
+            System.out.println("4 - Ð¡Ð¿Ð¸ÑÐ°Ñ‚ÑŒ Ñ‚Ð¾Ð²Ð°Ñ€");
+            System.out.println("5 - Ð˜Ð·Ð¼Ð½Ð¸Ñ‚ÑŒ Ñ†ÐµÐ½Ñƒ");
+            System.out.println("6 - Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¸Ð²Ð°Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´");
+            System.out.println("7 - Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¸Ð²Ð°Ñ‚ÑŒ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»");
+            System.out.println("8 - ÐžÑ‚Ñ‡ÐµÑ‚ Ð¾ Ð¿Ñ€Ð¸Ð±Ñ‹Ð»Ð¸");
+            System.out.println("0 - Ð—Ð°ÐºÑ€Ñ‹Ñ‚ÑŒ ÑÐ¼ÐµÐ½Ñƒ");
+            System.out.print("Ð’Ð²Ð¾Ð´ -> ");
             choose = ConsoleIO.getline();
 
             if ("1".equals(choose) && official.getStorage().getStotageSize() > 0) {

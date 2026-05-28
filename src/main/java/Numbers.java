@@ -13,15 +13,15 @@ public class Numbers {
     public boolean IsNumber(String str) {
         if (str == null) str = "";
         if (str.length() <= 0 || str.length() >= 10) {
-            System.out.println("Неккорекный ввод");
-            System.out.println("Ошибка размера числа: от 1 до 9 символов включительно\n");
+            System.out.println("РќРµРєРєРѕСЂРµРєРЅС‹Р№ РІРІРѕРґ");
+            System.out.println("РћС€РёР±РєР° СЂР°Р·РјРµСЂР° С‡РёСЃР»Р°: РѕС‚ 1 РґРѕ 9 СЃРёРјРІРѕР»РѕРІ РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ\n");
             ConsoleUtil.sleep(1500);
             return false;
         }
         for (int i = 0; i < str.length(); i++) {
             if (!Character.isDigit(str.charAt(i))) {
-                System.out.println("Неккорекный ввод");
-                System.out.println("Ошибка размера числа: введенные данные не являются числом\n");
+                System.out.println("РќРµРєРєРѕСЂРµРєРЅС‹Р№ РІРІРѕРґ");
+                System.out.println("РћС€РёР±РєР° СЂР°Р·РјРµСЂР° С‡РёСЃР»Р°: РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РЅРµ СЏРІР»СЏСЋС‚СЃСЏ С‡РёСЃР»РѕРј\n");
                 ConsoleUtil.sleep(1500);
                 return false;
             }
