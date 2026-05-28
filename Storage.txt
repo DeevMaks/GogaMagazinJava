@@ -1,0 +1,11 @@
+1 PokoMacdonalds 23 14500
+2 PokoRostics 24 14550
+3 SamsugXSsamsa 10 24000
+4 XXSPoko17 30 15000
+5 iPhone28ULTRA 2 300000
+6 GooglePXL 15 12030
+7 GoogleHD 11 15000
+8 CleshRoyle 23 23232
+9 Brawlsung 54 12345
+10 MagmaCUB 29 42555
+
